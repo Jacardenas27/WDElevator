@@ -1,0 +1,55 @@
+<div>
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-primary">Control del elevador</h2>
+        <div>
+          <label>Ingrese un piso:</label>
+          <input [(ngModel)]="newFloor" class="form-control col-md-5" type="number" min="1" value="1" max="12"/>
+          <button (click)="callElevator()" class="btn btn-outline-primary">Llamar elevador</button>
+        </div>
+        <div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-12">
+        <h3 class="text-Primary">Estado</h3>
+        <p>Piso actual:</p>
+        <h2 class="text-success"> {{status.currentFloor}} </h2>
+        <p>{{(status.isMoving) ? "Ascensor en movimiento." : "Ascensor detenido."}}</p>
+      </div>
+
+      <div class="col-md-6">
+        <table class="table bordered table-striped">
+          <thead>
+            <tr>
+              <th>Mensajes</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of status.messages">
+            <tr>
+              <td>{{item}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table bordered table-striped">
+          <thead>
+            <tr>
+              <th>Pisos solicitados</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of status.distinctRequests">
+            <tr>
+              <td>{{item}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
